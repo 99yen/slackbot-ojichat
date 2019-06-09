@@ -14,7 +14,7 @@ Python 3.5以降が必要です。
 
 ## 開発環境
 - Python 3.7.2
-- Ojichat 0.1.0
+- ojichat 0.2.0
 
 ## ライセンス
 MIT License

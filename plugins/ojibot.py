@@ -1,4 +1,4 @@
-#coding: UTF-8
+#coding: utf-8
 
 import subprocess
 import re
@@ -11,9 +11,12 @@ from slackbot_settings import OJICHAT_PATH, E_LEVEL, P_LEVEL
 
 @default_reply()
 def default_func(message):
-    display_name = message.user["profile"]["display_name"]
+    if message.user["profile"]["display_name"] != '':
+        name = message.user["profile"]["display_name"]
+    else:
+        name = message.user["profile"]["real_name"]
     
-    proc = subprocess.run([OJICHAT_PATH, "-e", E_LEVEL, "-p", P_LEVEL, display_name], stdout = subprocess.PIPE)
+    proc = subprocess.run([OJICHAT_PATH, "-e", E_LEVEL, "-p", P_LEVEL, name], stdout = subprocess.PIPE)
     ojisan_message = proc.stdout.decode("utf8")
 
     # アンダーバーがイタリック化の修飾になるのを防ぐために置換する
